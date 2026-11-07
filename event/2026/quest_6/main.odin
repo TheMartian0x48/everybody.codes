@@ -1,6 +1,5 @@
 package year_2026_quest_6
 
-import "core:container/queue"
 import q "core:container/queue"
 import "core:fmt"
 import "core:os"
@@ -20,24 +19,24 @@ main :: proc() {
 	}
 
 	Task :: struct {
-		sample: string,
-		test:   string,
-		fn:     proc(_: string),
+		files: []string,
+		fn:    proc(_: string),
 	}
 
 	quest := []Task {
-		{"./sample_e2026_q06_p1.txt", "./everybody_codes_e2026_q06_p1.txt", part_1},
-		{"./sample_e2026_q06_p2.txt", "./everybody_codes_e2026_q06_p2.txt", part_2},
-		{"./sample_e2026_q06_p3.txt", "./everybody_codes_e2026_q06_p3.txt", part_3},
+		{{"./sample_e2026_q06_p1.txt", "./everybody_codes_e2026_q06_p1.txt"}, part_1},
+		{{"./sample_e2026_q06_p2.txt", "./everybody_codes_e2026_q06_p2.txt"}, part_2},
+		{{"./sample_e2026_q06_p3.txt", "./everybody_codes_e2026_q06_p3.txt"}, part_3},
 	}
 
 	for q in quest {
-		fmt.println("\n<===============================================>")
-		fmt.printfln("\n[%s]\n", q.sample)
-		q.fn(abs_path(q.sample))
-		fmt.println("\n<===============================================>")
-		fmt.printfln("\n[%s]\n", q.test)
-		q.fn(abs_path(q.test))
+		for f in q.files {
+			fmt.println("\n<===============================================>")
+			fmt.printfln("\n[%s]\n", f)
+			file := abs_path(f)
+			defer delete(file)
+			q.fn(file)
+		}
 	}
 
 }
