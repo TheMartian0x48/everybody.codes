@@ -1,4 +1,4 @@
-package year_2026_quest_1
+package year_2026_quest_2
 
 import q "core:container/queue"
 import "core:fmt"
@@ -143,7 +143,7 @@ part_1 :: proc(file: string) {
 		checksum += n
 	}
 
-	fmt.printfln("[quest 2] [part 1] answer : %d", checksum)
+	fmt.printfln("[quest 2] [part 1/2/3] answer : %d", checksum)
 }
 
 part_2 :: part_1
