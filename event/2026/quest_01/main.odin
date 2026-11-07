@@ -1,11 +1,8 @@
 package year_2026_quest_1
 
-import "core:container/queue"
-import q "core:container/queue"
 import "core:fmt"
 import "core:os"
 import "core:slice"
-import "core:sort"
 import "core:strconv"
 import "core:strings"
 
